@@ -15,6 +15,7 @@
           <div class="col-12 mb-2 pb_me-4">
             <div class="pt-3">
               <div class="card-body">
+              <div>Ringw</div>
                 <div class="col-12 mt-3 mb-2 px-0">
                   <div class="ck-content">
                     <p class="question_txt">
@@ -150,6 +151,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 var quiz = {
   title: 'quiz sample',
   questions: [

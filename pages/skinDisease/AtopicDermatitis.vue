@@ -13,6 +13,7 @@
       <div class="container container_short skin-content">
         <div class="row">
           <div class="col-12 mb-2 pb_me-4">
+          <div>Atopic</div>
             <div class="pt-3">
               <div class="card-body">
                 <div class="col-12 mt-3 mb-2 px-0">
@@ -154,6 +155,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 var quiz = {
   title: 'quiz sample',
   questions: [
