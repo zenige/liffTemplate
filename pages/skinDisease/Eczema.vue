@@ -790,7 +790,7 @@ export default {
       }
     },
     sendMessage() {
-      alreat("insend Message")
+      alert("insend Message")
       liff.sendMessages([
           // {
           //   type: 'message',
