@@ -728,7 +728,7 @@ export default {
       } else {
         this.damage = {
           damageTH: 'ไม่มีระดับความรุนแรง',
-          damageEN: 'Severe',
+          damageEN: 'unkow',
         }
       }
     },
@@ -760,9 +760,11 @@ export default {
           userId: this.userId,
           state: 'atopic',
           subState: this.damage.damageEN,
+          score : this.final,
+          subStateTH : this.damage.damageTH
         }
         await this.$axios.post(
-          'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
+          'https://ccf6-58-10-4-220.ngrok.io/api/updatestate',
           body
         )
       } catch (err) {

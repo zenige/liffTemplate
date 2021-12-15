@@ -854,9 +854,11 @@ export default {
           userId: this.userId,
           state: 'ringworm',
           subState: this.damage.damageEN,
+          score : this.final,
+          subStateTH : this.damage.damageTH
         }
         await this.$axios.post(
-          'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
+          'https://ccf6-58-10-4-220.ngrok.io/api/updatestate',
           body
         )
       } catch (err) {
