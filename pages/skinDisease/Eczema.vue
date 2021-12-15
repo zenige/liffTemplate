@@ -772,12 +772,12 @@ export default {
       if (this.final == 0) {
         this.damage = {
           damageTH: 'ไม่มีระดับความรุนแรง',
-          damageEN: 'clear',
+          damageEN: 'Clear',
         }
       } else if (this.final >= 0.1 && this.final <= 1) {
      this.damage = {
           damageTH: 'มีความรุนแรงระดับต่ำ',
-          damageEN: 'Almost Clear',
+          damageEN: 'Almost_Clear',
         }
       } else if (this.final >= 1.1 && this.final <= 7) {
     this.damage = {
@@ -797,29 +797,33 @@ export default {
       } else if (this.final >= 50.1 && this.final <= 72) {
     this.damage = {
           damageTH: 'มีความรุนแรงมากที่สุด',
-          damageEN: 'Very Severe',
+          damageEN: 'Very_Severe',
         }
       } else {
         this.damage = {
           damageTH: 'ไม่มีระดับความรุนแรง',
-          damageEN: 'clear',
+          damageEN: 'unknow',
         }
       }
     },
     sendMessage() {
       alert("insend Message")
       liff.sendMessages([
-          {
-            type: 'text',
-            text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN}) ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
-          }
+        {
+          type:'text',
+          text:'การทำแบบสอบถามเสร็จสิ้น'
+        }
+          // {
+          //   type: 'text',
+          //   text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN}) ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
+          // }
    
-          ,
-          {
-            type: 'text',
-            text:
-              'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
-          },
+          // ,
+          // {
+          //   type: 'text',
+          //   text:
+          //     'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
+          // },
         ])
         .then(() => {
           console.log('message sent')
@@ -835,6 +839,7 @@ export default {
           userId: this.userId,
           state: 'eczema',
           subState: this.damage.damageEN,
+          score : this.final
         }
         await this.$axios.post(
           'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
