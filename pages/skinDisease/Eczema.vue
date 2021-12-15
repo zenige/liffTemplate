@@ -763,7 +763,7 @@ export default {
       console.log('คำตอบ', this.final)
       await this.calDamgae()
       await this.updateState()
-      res = await this.sendMessage()
+      let res = await this.sendMessage()
       if(res){
         liff.closeWindow()
       }

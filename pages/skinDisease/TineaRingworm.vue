@@ -825,8 +825,13 @@ export default {
       console.log('คำตอบ', this.final)
       await this.calDamgae()
       await this.updateState()
-      await this.sendMessage()
-      liff.closeWindow()
+      let res = await this.sendMessage()
+      if(res){
+        liff.closeWindow()
+      }
+      else{
+        alert("sendMessage err")
+      }
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
          calDamgae() {
