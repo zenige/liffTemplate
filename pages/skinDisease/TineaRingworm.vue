@@ -824,8 +824,8 @@ export default {
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
       await this.calDamgae()
-      await this.sendMessage()
       await this.updateState()
+      await this.sendMessage()
       liff.closeWindow()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },

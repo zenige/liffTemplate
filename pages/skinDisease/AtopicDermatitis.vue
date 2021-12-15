@@ -703,8 +703,8 @@ export default {
       console.log('B', B)
       console.log('C', C)
       await this.calDamgae()
-      await this.sendMessage()
       await this.updateState()
+      await this.sendMessage()
       liff.closeWindow()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
