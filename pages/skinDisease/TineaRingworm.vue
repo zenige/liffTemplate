@@ -804,7 +804,7 @@ export default {
     // this.isLoading = false
   },
   methods: {
-    math() {
+    async math() {
       let body = this.ans[0] * this.ans[1]
       let foot = (this.ans[2] + this.ans[3]) * this.ans[4]
       let head =

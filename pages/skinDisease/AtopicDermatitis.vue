@@ -670,7 +670,7 @@ export default {
     // this.isLoading = false
   },
   methods: {
-    math() {
+    async math() {
       let A =
         (this.ans[0] +
           this.ans[1] +
