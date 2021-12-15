@@ -9,7 +9,7 @@
             :max="quiz.questions.length"
           ></b-progress>
         </div>
-      </div>
+      </div>   
 
       <div class="container container_short skin-content">
         <div class="row">
