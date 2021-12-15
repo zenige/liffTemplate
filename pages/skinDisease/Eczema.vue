@@ -840,6 +840,7 @@ export default {
           state: 'eczema',
           subState: this.damage.damageEN,
           score : this.final
+          subStateTH : this.damageTH
         }
         await this.$axios.post(
           'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
