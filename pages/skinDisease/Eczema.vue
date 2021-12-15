@@ -839,7 +839,7 @@ export default {
           userId: this.userId,
           state: 'eczema',
           subState: this.damage.damageEN,
-          score : this.final
+          score : this.final,
           subStateTH : this.damageTH
         }
         await this.$axios.post(
