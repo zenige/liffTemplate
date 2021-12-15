@@ -643,14 +643,31 @@ export default {
       final: 0,
       end: false,
       isLoading: false,
+      damage: {},
+      userId: '',
     }
   },
   components: {
     Loader: () => import('~/components/Loader.vue'),
   },
   async mounted() {
-    this.isLoading = true
-    this.isLoading = false
+    this.userId = this.$route.query.userId
+    Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
+      .then(() => {
+        // Script is loaded, do something
+        liff
+          .init({
+            liffId: '1656721598-rbNWDBag',
+          })
+          .then(() => {
+            console.log('PASS')
+          })
+      })
+      .catch((err) => {
+        console.log('f', err)
+      })
+    // this.isLoading = true
+    // this.isLoading = false
   },
   methods: {
     math() {
@@ -683,7 +700,72 @@ export default {
       console.log('A', A)
       console.log('B', B)
       console.log('C', C)
+      await this.calDamgae()
+      await this.sendMessage()
+      await this.updateState()
+      liff.closeWindow()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
+    },
+       calDamgae() {
+    if (this.final >= 0 && this.final <= 15) {
+     this.damage = {
+          damageTH: 'มีความรุนแรงเล็กน้อย',
+          damageEN: 'Mild',
+        }
+      } else if (this.final >= 16 && this.final <= 40) {
+    this.damage = {
+          damageTH: 'มีความรุนแรงปานกลาง',
+          damageEN: 'Moderate',
+        }
+      } else if (this.final >= 41 && this.final <= 103) {
+    this.damage = {
+          damageTH: 'มีความรุนแรงมาก',
+          damageEN: 'Moderate',
+        }
+ 
+      } else {
+        this.damage = {
+          damageTH: 'ไม่มีระดับความรุนแรง',
+          damageEN: 'Severe',
+        }
+      }
+    },
+      sendMessage() {
+      liff.sendMessages([
+          {
+            type: 'text',
+            text: `คุณมีระดับความรุนแรงของโรคผื่นภูมิแพ้ผิวหนัง (Atopic Dermatitis) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN}) ตามเกณฑ์ของ The Scoring of Atopic Dermatitis (SCORAD) 😄`,
+          }
+   
+          ,
+          {
+            type: 'text',
+            text:
+              'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
+          },
+        ])
+        .then(() => {
+          console.log('message sent')
+        })
+        .catch((err) => {
+          console.log('error', err)
+        })
+    },
+        async updateState() {
+      console.log(this.damage.damageEN)
+      try {
+        let body = {
+          userId: this.userId,
+          state: 'atopic',
+          subState: this.damage.damageEN,
+        }
+        await this.$axios.post(
+          'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
+          body
+        )
+      } catch (err) {
+        alert(err)
+      }
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value

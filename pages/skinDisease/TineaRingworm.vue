@@ -777,14 +777,31 @@ export default {
       final: 0,
       end: false,
       isLoading: false,
+      damage: {},
+      userId: '',
     }
   },
   components: {
     Loader: () => import('~/components/Loader.vue'),
   },
   async mounted() {
-    this.isLoading = true
-    this.isLoading = false
+     this.userId = this.$route.query.userId
+    Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
+      .then(() => {
+        // Script is loaded, do something
+        liff
+          .init({
+            liffId: '1656721598-rbNWDBag',
+          })
+          .then(() => {
+            console.log('PASS')
+          })
+      })
+      .catch((err) => {
+        console.log('f', err)
+      })
+    // this.isLoading = true
+    // this.isLoading = false
   },
   methods: {
     math() {
@@ -804,7 +821,66 @@ export default {
         body + foot + head + face + hand + nail + Groin + leg + arm + back
       this.final = sum.toFixed(2)
       console.log('คำตอบ', this.final)
+      await this.calDamgae()
+      await this.sendMessage()
+      await this.updateState()
+      liff.closeWindow()
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
+    },
+         calDamgae() {
+    if (this.final >= 0 && this.final <= 24) {
+     this.damage = {
+          damageTH: 'ไม่มีความรุนแรงกลาง',
+          damageEN: 'Mild',
+        }
+      } else if (this.final >= 25 && this.final <= 100) {
+    this.damage = {
+          damageTH: 'มีความรุนแรง',
+          damageEN: 'Severe',
+        }
+      }  else {
+        this.damage = {
+          damageTH: 'ไม่สามารถประเมิน',
+          damageEN: 'unknow',
+        }
+      }
+    },
+       async updateState() {
+      console.log(this.damage.damageEN)
+      try {
+        let body = {
+          userId: this.userId,
+          state: 'ringworm',
+          subState: this.damage.damageEN,
+        }
+        await this.$axios.post(
+          'https://9c95-58-10-4-220.ngrok.io/api/updatestate',
+          body
+        )
+      } catch (err) {
+        alert(err)
+      }
+    },
+     sendMessage() {
+      liff.sendMessages([
+          {
+            type: 'text',
+            text: `คุณมีระดับความรุนแรงของโรคกลากเกลื้อน (Tinea Ringworm) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN})  😄`,
+          }
+   
+          ,
+          {
+            type: 'text',
+            text:
+              'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
+          },
+        ])
+        .then(() => {
+          console.log('message sent')
+        })
+        .catch((err) => {
+          console.log('error', err)
+        })
     },
     checkpointbg(value, score) {
       this.quiz.questions[this.questionIndex - 1].checkpoint = value

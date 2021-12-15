@@ -763,30 +763,46 @@ export default {
       await this.calDamgae()
       await this.sendMessage()
       await this.updateState()
- 
+      liff.closeWindow()
 
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
     calDamgae() {
       if (this.final == 0) {
-        console.log('000')
         this.damage = {
           damageTH: 'ไม่มีระดับความรุนแรง',
           damageEN: 'clear',
-          med: 'แนวทางในการใช้ยารักษาตามระดับความรุนแรงนี้\n\nควรเลือกใช้ยาคอร์ติโคสเตียรอยด์ชนิดทาภายนอกที่มีระดับความแรงระดับ Class VII: Least Potent \n\nเช่น Hydrocortisone acetate 1%, 2.5% cream (Hytisone® cream) หรือ Prednisolone 0.5% (Clinipred® cream) เป็นต้น\n\n\nอ้างอิงจาก: https://www.psoriasis.org/potency-chart/',
         }
       } else if (this.final >= 0.1 && this.final <= 1) {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+     this.damage = {
+          damageTH: 'มีความรุนแรงระดับต่ำ',
+          damageEN: 'Almost Clear',
+        }
       } else if (this.final >= 1.1 && this.final <= 7) {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+    this.damage = {
+          damageTH: 'มีความรุนแรงเล็กน้อย',
+          damageEN: 'Mild',
+        }
       } else if (this.final >= 7.1 && this.final <= 21) {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+    this.damage = {
+          damageTH: 'มีความรุนแรงปานกลาง',
+          damageEN: 'Moderate',
+        }
       } else if (this.final >= 21.1 && this.final <= 50) {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+        this.damage = {
+          damageTH: 'มีความรุนแรงมาก',
+          damageEN: 'Severe',
+        }
       } else if (this.final >= 50.1 && this.final <= 72) {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+    this.damage = {
+          damageTH: 'มีความรุนแรงมากที่สุด',
+          damageEN: 'Very Severe',
+        }
       } else {
-        this.damage = { damageTH: 'ไม่มีระดับความรุนแรง' }
+        this.damage = {
+          damageTH: 'ไม่มีระดับความรุนแรง',
+          damageEN: 'clear',
+        }
       }
     },
     sendMessage() {
@@ -794,7 +810,7 @@ export default {
       liff.sendMessages([
           {
             type: 'text',
-            text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
+            text: `คุณมีระดับความรุนแรงของโรคผื่นแพ้อักเสบ (Eczema) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN}) ตามเกณฑ์ของ Eczema Area and Severity Index (EASI) 😄`,
           }
    
           ,
@@ -808,7 +824,6 @@ export default {
           console.log('message sent')
         })
         .catch((err) => {
-          alert('liff',err)
           console.log('error', err)
         })
     },
