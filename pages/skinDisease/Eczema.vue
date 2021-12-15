@@ -811,7 +811,7 @@ export default {
           console.log('message sent')
         })
         .catch((err) => {
-          alear('liff',err)
+          alert('liff',err)
           console.log('error', err)
         })
     },
