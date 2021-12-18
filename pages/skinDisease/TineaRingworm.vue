@@ -15,7 +15,7 @@
           <div class="col-12 mb-2 pb_me-4">
             <div class="pt-3">
               <div class="card-body">
-              <div>Ringw</div>
+              <div>Tinea Ringworm</div>
                 <div class="col-12 mt-3 mb-2 px-0">
                   <div class="ck-content">
                     <p class="question_txt">
@@ -787,7 +787,7 @@ export default {
     Loader: () => import('~/components/Loader.vue'),
   },
   async mounted() {
-     this.userId = this.$route.query.userId
+    this.userId = this.$route.query.userId
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
         // Script is loaded, do something
@@ -800,10 +800,9 @@ export default {
           })
       })
       .catch((err) => {
-        console.log('f', err)
+        console.log( err)
       })
-    // this.isLoading = true
-    // this.isLoading = false
+
   },
   methods: {
     async math() {
@@ -867,7 +866,7 @@ export default {
           body
         )
       } catch (err) {
-        alert(err)
+        console.log(err)
       }
     },
      sendMessage() {
@@ -876,20 +875,9 @@ export default {
           type:'text',
           text:'การทำแบบสอบถามเสร็จสิ้น'
         }
-          // {
-          //   type: 'text',
-          //   text: `คุณมีระดับความรุนแรงของโรคกลากเกลื้อน (Tinea Ringworm) อยู่ที่ ${this.final} คะแนน ซึ่งถือว่าอยู่ในระดับที่ ${this.damage.damageTH} (${this.damage.damageEN})  😄`,
-          // }
-   
-          // ,
-          // {
-          //   type: 'text',
-          //   text:
-          //     'คุณต้องการดูผลิตภัณฑ์ที่แนะนำหรือไม่?\n\nกรุณาพิมพ์ "ใช่" เพื่อดูผลิตภัณฑ์แนะนำ',
-          // },
         ])
         .then(() => {
-          console.log('message sent')
+          liff.closeWindow()
         })
         .catch((err) => {
           console.log('error', err)

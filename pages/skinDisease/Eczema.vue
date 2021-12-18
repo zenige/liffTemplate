@@ -15,7 +15,7 @@
         <div class="row">
           <div class="col-12 mb-2 pb_me-4">
             <div class="pt-3">
-            <div>ECZe</div>
+            <div>Eczema</div>
               <div class="card-body">
                 <div class="col-12 mt-3 mb-2 px-0">
                   <div class="ck-content">
@@ -717,8 +717,6 @@ export default {
     //   liffId :'1655993001-QLqyKnVe'
     // })
     this.userId = this.$route.query.userId
-    alert(this.userId)
-    console.log(this.$route)
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
         // Script is loaded, do something

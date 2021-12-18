@@ -35,7 +35,7 @@ export default {
    */
   script: [
     // { src: 'assets/hc-libs/js/main/jquery.min.js' },
-    // { src: 'assets/hc-libs/js/main/bootstrap.bundle.min.js' },
+    { src: 'assets/hc-libs/js/main/bootstrap.bundle.min.js' },
     // { src: 'assets/hc-libs/js/plugins/loaders/blockui.min.js' },
     // // { src: 'assets/hc-libs/js/app.js' },
     // { src: 'assets/hc-libs/js/swiper.js' },
@@ -45,8 +45,8 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     // 'assets/hc-libs/css/icons/icomoon/styles.css',
-    // 'assets/hc-libs/css/bootstrap.min.css',
-    // 'assets/hc-libs/css/bootstrap_limitless.min.css',
+    'assets/hc-libs/css/bootstrap.min.css',
+    'assets/hc-libs/css/bootstrap_limitless.min.css',
     // 'assets/hc-libs/css/layout.min.css',
     // 'assets/hc-libs/css/components.min.css',
     // 'assets/hc-libs/css/colors.min.css',
@@ -82,7 +82,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
+  //  "https://go.nuxtjs.dev/bootstrap",
     // 'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
