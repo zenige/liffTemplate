@@ -869,7 +869,7 @@ export default {
       liff.sendMessages([
         {
           type:'text',
-          text:'การทำแบบสอบถามเสร็จสิ้น'
+          text:'การทำแบบประเมินเสร็จสิ้น'
         }
         ])
         .then(() => {
