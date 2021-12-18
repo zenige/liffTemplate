@@ -793,7 +793,7 @@ export default {
         // Script is loaded, do something
         liff
           .init({
-            liffId: '1656721598-rbNWDBag',
+            liffId: '1656721605-52PWxpmj',
           })
           .then(() => {
             console.log('PASS')
