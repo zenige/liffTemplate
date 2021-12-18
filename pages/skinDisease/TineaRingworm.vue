@@ -825,12 +825,8 @@ export default {
       await this.calDamgae()
       await this.updateState()
       let res = await this.sendMessage()
-      if(res){
-        liff.closeWindow()
-      }
-      else{
-        alert("sendMessage err")
-      }
+      liff.closeWindow()
+     
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
          calDamgae() {

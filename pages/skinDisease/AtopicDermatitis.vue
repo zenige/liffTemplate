@@ -705,12 +705,13 @@ export default {
       await this.calDamgae()
       await this.updateState()
       let res = await this.sendMessage()
-      if(res){
-        liff.closeWindow()
-      }
-      else{
-        alert("sendMessage err")
-      }
+      liff.closeWindow()
+      // if(res){
+      //   liff.closeWindow()
+      // }
+      // else{
+      //  console.log("err")
+      // }
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
        calDamgae() {
@@ -777,7 +778,7 @@ export default {
           body
         )
       } catch (err) {
-        alert(err)
+       console.log(err)
       }
     },
     checkpointbg(value, score) {
