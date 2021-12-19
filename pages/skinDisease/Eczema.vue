@@ -850,7 +850,7 @@ export default {
           subStateTH : this.damage.damageTH
         }
         await this.$axios.post(
-          'https://dbd4-58-10-4-212.ngrok.io/api/updatestate',
+          'https://bc15-58-10-4-175.ngrok.io/api/updatestate',
           body
         )
       } catch (err) {
