@@ -786,17 +786,17 @@ export default {
   components: {
     Loader: () => import('~/components/Loader.vue'),
   },
-  async created() {
+  async mounted() { 
     this.userId = this.$route.query.userId
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
         // Script is loaded, do something
         liff
-          .init({
+          .init({ 
             liffId: '1656721605-52PWxpmj',
           })
           .then(() => {
-            console.log('PASS')
+            console.log('PASSss')
           })
       })
       .catch((err) => {
