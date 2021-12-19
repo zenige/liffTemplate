@@ -121,6 +121,6 @@ const routesConfig = [
   ...SKIN_DISEASE,
 ]
 
-export { CHATBOT_TRAINING_ROUTE, HEALTHCARE_ROUTE }
+export {  HEALTHCARE_ROUTE }
 
 export default routesConfig
