@@ -786,7 +786,7 @@ export default {
   components: {
     Loader: () => import('~/components/Loader.vue'),
   },
-  async mounted() {
+  async created() {
     this.userId = this.$route.query.userId
     Vue.loadScript('https://static.line-scdn.net/liff/edge/2/sdk.js')
       .then(() => {
@@ -836,17 +836,12 @@ export default {
           damageTH: 'ไม่มีความรุนแรงกลาง',
           damageEN: 'Mild',
         }
-      } else if (this.final >= 25 && this.final <= 100) {
+      } else if (this.final >= 25 ) {
     this.damage = {
           damageTH: 'มีความรุนแรง',
           damageEN: 'Severe',
         }
-      }  else {
-        this.damage = {
-          damageTH: 'ไม่สามารถประเมิน',
-          damageEN: 'unknow',
-        }
-      }
+      } 
     },
        async updateState() {
       alert("update Medtoh")
