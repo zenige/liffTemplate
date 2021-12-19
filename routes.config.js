@@ -36,46 +36,46 @@ const HEALTHCARE_ROUTE = [
   // },
 ]
 
-const CHATBOT_TRAINING_ROUTE = [
-  {
-    name: 'Learned word',
-    path: '/chatbot-training/learned-word',
-    component: 'pages/chatbotTraining/TrainedWord.vue',
-  },
-  {
-    name: 'Feature management',
-    path: '/chatbot-training/feature-management',
-    component: 'pages/chatbotTraining/FeatureManagement.vue',
-  },
-  {
-    name: 'Group management',
-    path: '/chatbot-training/group-management',
-    component: 'pages/chatbotTraining/GroupManagement.vue',
-  },
-  {
-    name: 'Group management group',
-    path: '/chatbot-training/group-management/group/:groupId',
-    component: 'pages/chatbotTraining/GroupManagementGroup.vue',
-  },
-]
+// const CHATBOT_TRAINING_ROUTE = [
+//   {
+//     name: 'Learned word',
+//     path: '/chatbot-training/learned-word',
+//     component: 'pages/chatbotTraining/TrainedWord.vue',
+//   },
+//   {
+//     name: 'Feature management',
+//     path: '/chatbot-training/feature-management',
+//     component: 'pages/chatbotTraining/FeatureManagement.vue',
+//   },
+//   {
+//     name: 'Group management',
+//     path: '/chatbot-training/group-management',
+//     component: 'pages/chatbotTraining/GroupManagement.vue',
+//   },
+//   {
+//     name: 'Group management group',
+//     path: '/chatbot-training/group-management/group/:groupId',
+//     component: 'pages/chatbotTraining/GroupManagementGroup.vue',
+//   },
+// ]
 
-const DASHBOARD_ROUTE = [
-  {
-    name: 'All patient group',
-    path: '/dashboard/all-patient-group',
-    component: 'pages/dashboard/PatientGroup.vue',
-  },
-  {
-    name: 'Patient in group',
-    path: '/dashboard/patient-in-group/:groupId',
-    component: 'pages/dashboard/PatientInGroup.vue',
-  },
-  {
-    name: 'Pattttp',
-    path: '/test',
-    component: 'pages/test.vue',
-  },
-]
+// const DASHBOARD_ROUTE = [
+//   {
+//     name: 'All patient group',
+//     path: '/dashboard/all-patient-group',
+//     component: 'pages/dashboard/PatientGroup.vue',
+//   },
+//   {
+//     name: 'Patient in group',
+//     path: '/dashboard/patient-in-group/:groupId',
+//     component: 'pages/dashboard/PatientInGroup.vue',
+//   },
+//   {
+//     name: 'Pattttp',
+//     path: '/test',
+//     component: 'pages/test.vue',
+//   },
+// ]
 
 const SKIN_DISEASE = [
   {
@@ -114,10 +114,10 @@ const USER = [
 ]
 
 const routesConfig = [
-  ...CHATBOT_TRAINING_ROUTE,
-  ...HEALTHCARE_ROUTE,
-  ...DASHBOARD_ROUTE,
-  ...USER,
+  // ...CHATBOT_TRAINING_ROUTE,
+  // ...HEALTHCARE_ROUTE,
+  // ...DASHBOARD_ROUTE,
+  // ...USER,
   ...SKIN_DISEASE,
 ]
 
