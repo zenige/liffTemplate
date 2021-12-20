@@ -830,7 +830,7 @@ export default {
       this.$router.push(this.localePath('/questionnaire/submit-answer'))
     },
          calDamgae() {
-           alert(this.final)
+        
     if (this.final >= 0 && this.final <= 24) {
      this.damage = {
           damageTH: 'ไม่มีความรุนแรงกลาง',
@@ -844,7 +844,7 @@ export default {
       } 
     },
        async updateState() {
-      alert("update Medtoh")
+   
       try {
         let body = {
           userId: this.userId,
@@ -853,7 +853,7 @@ export default {
           score : this.final,
           subStateTH : this.damage.damageTH
         }
-        alert(JSON.stringify(body))
+     
         await this.$axios.post(
           'https://1508-58-10-4-175.ngrok.io/api/updatestate',
           body
